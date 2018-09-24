@@ -1,5 +1,5 @@
 
-# Microsoft Teams Graph APIS - Application Permission
+# Microsoft Teams Graph APIs - Application Permission
 
 This is a console sample which shows how to create a new Team in Microsoft Teams using Graph APIs.
 

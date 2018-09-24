@@ -16,9 +16,10 @@ namespace TeamsGraphApplicationContext
     {
         static void Main(string[] args)
         {
-            string tenant = "blrdev.onmicrosoft.com";
-            string appId = "5dd10f5a-fdb6-4dcd-83d3-d0df9ae17409";
-            string appSecret = "ebpDKKP50_:]@dtqoKKM758";
+            // Setup your application here: https://developer.microsoft.com/en-us/graph/docs/concepts/auth_v2_service
+            string tenant = "";
+            string appId = "";
+            string appSecret = "";
             string graphBetaEndpoint = "https://graph.microsoft.com/beta/";
 
             // One time process for Admin consent. 

@@ -124,6 +124,27 @@ namespace TeamsAdmin.Helper
         }
 
 
+        public async Task<string> AddWebsiteTabToChannel(string accessToken, string teamId, string channelId)
+        {
+            string endpoint = _graphApiEndpoint + $"/teams/{teamId}/channels/{channelId}/tabs";
+
+            NewTabInfo newTabInfo = new NewTabInfo()
+            {
+                
+                displayName = "WebSiteTest",
+                teamsAppodatabind = "https://graph.microsoft.com/beta/appCatalogs/teamsApps/com.microsoft.teamspace.tab.web",
+                configuration= new Configuration()
+                {
+                     contentUrl = "https://www.bing.com/maps/embed",
+                     websiteUrl = "https://www.bing.com/maps/embed",
+                     entityId = null,
+                     removeUrl = null
+                }
+            };
+
+            return await PostRequest(accessToken, endpoint, JsonConvert.SerializeObject(newTabInfo));
+        }
+
         public async Task<bool> AddTeamMemberAsync(
             string accessToken, string teamId, string userId)
         {

@@ -60,4 +60,22 @@ namespace TeamsAdmin.Models
         public string id { get; set; }
     }
 
+
+
+    public class NewTabInfo
+    {
+        public string displayName { get; set; }
+        [JsonProperty("teamsApp@odata.bind")]
+        public string teamsAppodatabind { get; set; }
+        public Configuration configuration { get; set; }
+    }
+
+    public class Configuration
+    {
+        public object entityId { get; set; }
+        public string contentUrl { get; set; }
+        public object removeUrl { get; set; }
+        public object websiteUrl { get; set; }
+    }
+
 }

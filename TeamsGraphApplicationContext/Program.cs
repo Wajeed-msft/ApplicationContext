@@ -20,21 +20,29 @@ namespace TeamsGraphApplicationContext
             string tenant = ""; // ex: blrdev.onmicrosoft.com
             string appId = "";
             string appSecret = "";
-            string graphBetaEndpoint = "https://graph.microsoft.com/beta/";
+            string graphEndPoint = "https://graph.microsoft.com/beta/";
 
             // One time process for Admin consent. 
             GetOneTimeAdminConsent(tenant, appId);
 
             string accessToken = GetAccessToken(tenant, appId, appSecret);
 
-            TeamsGraphApiHelper helper = new TeamsGraphApiHelper(graphBetaEndpoint);
-            helper.CreateNewTeam(new NewTeamDetails()
-            {
-                TeamName = "Application Context Test 2",
-                OwnerEmailId = "pippen@blrdev.onmicrosoft.com",
-                // ChannelNames = new List<string>() { "Announcements", "Dev Discussion" }, // Currently channel can't be created in App Context.
-                MemberEmails = new List<string>() { "pippen@blrdev.onmicrosoft.com", "olo@blrdev.onmicrosoft.com", "poppy@blrdev.onmicrosoft.com" },
-            }, accessToken).Wait();
+            TeamsGraphApiHelper helper = new TeamsGraphApiHelper(graphEndPoint);
+
+            var channelId = "YourChannelId";
+            var teamId = "YourTeamId";
+            helper.AddWebsiteTabToChannel(accessToken, teamId, channelId).Wait();
+
+            Console.WriteLine("Added Tab Created successfully");
+            Console.ReadLine();
+            
+            //helper.CreateNewTeam(new NewTeamDetails()
+            //{
+            //    TeamName = "Application Context Test 2",
+            //    OwnerEmailId = "pippen@blrdev.onmicrosoft.com",
+            //    // ChannelNames = new List<string>() { "Announcements", "Dev Discussion" }, // Currently channel can't be created in App Context.
+            //    MemberEmails = new List<string>() { "pippen@blrdev.onmicrosoft.com", "olo@blrdev.onmicrosoft.com", "poppy@blrdev.onmicrosoft.com" },
+            //}, accessToken).Wait();
 
         }
 
